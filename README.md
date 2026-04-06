@@ -42,7 +42,13 @@ Create an `agent-config.json`:
 }
 ```
 
-Configuration sources in priority order: environment variables > `agent-config.json` > built-in defaults.
+The system determines settings using the following override hierarchy (highest to lowest):
+
+1. Environment Variables (overrides all)
+
+2. agent-config.json
+
+3. Built-in Defaults (used only if no other value is found)
 
 | Env var | Default | Description |
 |---------|---------|-------------|
