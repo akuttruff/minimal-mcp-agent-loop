@@ -1,6 +1,6 @@
 import { describe, it, mock, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
-import { RateLimiter } from "./rate-limiter.js";
+import { RateLimiter } from "../rate-limiter.js";
 
 describe("RateLimiter", () => {
   let mockDate: ReturnType<typeof mock.fn>;

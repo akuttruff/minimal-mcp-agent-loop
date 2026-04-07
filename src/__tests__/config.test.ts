@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { writeFileSync, unlinkSync } from "node:fs";
-import { loadConfig } from "./config.js";
+import { loadConfig } from "../config.js";
 import {
   DEFAULT_MODEL,
   LLM_BASE_URL,
@@ -10,7 +10,7 @@ import {
   RATE_LIMIT_MAX_CALLS,
   RATE_LIMIT_WINDOW_SECONDS,
   AUDIT_LOG_PATH,
-} from "./constants.js";
+} from "../constants.js";
 
 const TEST_CONFIG_PATH = "test-agent-config.json";
 

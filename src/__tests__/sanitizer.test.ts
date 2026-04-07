@@ -7,8 +7,8 @@ import {
   validateUrlArg,
   checkToolResultForInjection,
   wrapAsData,
-} from "./sanitizer.js";
-import { MAX_INPUT_LENGTH, MAX_STRING_PARAM_LENGTH } from "./constants.js";
+} from "../sanitizer.js";
+import { MAX_INPUT_LENGTH, MAX_STRING_PARAM_LENGTH } from "../constants.js";
 
 // --- stripControlChars ---
 

@@ -4,7 +4,7 @@ export const APP_VERSION = "1.0.0";
 export const USER_AGENT = "MinimalMCPAgent/1.0";
 
 // LLM backend
-export const LLM_BASE_URL = "http://localhost:8000";
+export const LLM_BASE_URL = "http://localhost:1234";
 export const LLM_TIMEOUT_MS = 120_000;
 export const DEFAULT_MODEL = "llama3.3:70b";
 

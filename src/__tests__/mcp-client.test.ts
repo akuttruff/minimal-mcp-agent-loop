@@ -1,6 +1,6 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { MCPClientManager } from "./mcp-client.js";
+import { MCPClientManager } from "../mcp-client.js";
 
 describe("MCPClientManager", () => {
   it("constructs without error", () => {

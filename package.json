@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "tsc && node --test dist/*.test.js"
+    "test": "tsc && node --test dist/__tests__/*.test.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.29.0"

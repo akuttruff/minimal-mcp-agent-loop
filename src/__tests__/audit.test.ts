@@ -1,7 +1,7 @@
 import { describe, it, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, unlinkSync } from "node:fs";
-import { AuditLogger } from "./audit.js";
+import { AuditLogger } from "../audit.js";
 
 const TEST_LOG_PATH = "test-audit.jsonl";
 

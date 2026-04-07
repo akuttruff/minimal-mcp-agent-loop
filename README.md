@@ -1,13 +1,15 @@
 # minimal-mcp-agent-loop
 
-A secure agent loop in TypeScript that bridges local LLMs to [MCP (Model Context Protocol)](https://modelcontextprotocol.io) servers, with [OWASP security for LLM applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) as a first priority. Works with any OpenAI-compatible LLM server — [oMLX](https://omlx.ai/), [LM Studio](https://lmstudio.ai), Ollama, etc.
+A secure agent loop in TypeScript that bridges local LLMs to [MCP (Model Context Protocol)](https://modelcontextprotocol.io) servers, with [OWASP security for LLM applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) as a first priority. Built for [LM Studio](https://lmstudio.ai), works with any OpenAI-compatible LLM server.
+
+## The problem
+
+Some local models (like llama-3.3-instruct) output tool calls as raw JSON text instead of structured `tool_calls` that LM Studio can execute. The model knows the right tool to call, but nothing actually makes the call. This agent loop closes that gap.
 
 ## What it does
 
-When a local LLM has tools available, it outputs tool call JSON — but nothing actually executes those calls. This agent loop closes that gap:
-
 1. Sends your question to the LLM with available MCP tools
-2. Parses tool calls from the response
+2. Parses tool calls from the response — both structured `tool_calls` and raw JSON text output
 3. Validates against an allowlist, rate limits, and sanitizes arguments
 4. Executes the tool call via the MCP server
 5. Wraps the result in security delimiters and feeds it back
@@ -52,7 +54,7 @@ The system determines settings using the following override hierarchy (highest t
 
 | Env var | Default | Description |
 |---------|---------|-------------|
-| `LLM_BASE_URL` | `http://localhost:8000` | LLM server endpoint (oMLX default) |
+| `LLM_BASE_URL` | `http://localhost:1234` | LLM server endpoint (LM Studio default) |
 | `MODEL` | `llama3.3:70b` | Model name |
 | `MAX_ITERATIONS` | `10` | Max agent loop iterations per query |
 | `RATE_LIMIT_MAX_CALLS` | `30` | Max tool calls per window |
@@ -62,14 +64,14 @@ The system determines settings using the following override hierarchy (highest t
 ### Run
 
 ```bash
-# Interactive REPL
+# Interactive REPL (connects to LM Studio on localhost:1234)
 node dist/index.js
 
 # Single query
 node dist/index.js --query "What is MCP?"
 
-# With a different LLM server (e.g., LM Studio)
-LLM_BASE_URL=http://localhost:1234 node dist/index.js
+# With a different LLM server (e.g., oMLX)
+LLM_BASE_URL=http://localhost:8000 node dist/index.js
 ```
 
 ### REPL commands

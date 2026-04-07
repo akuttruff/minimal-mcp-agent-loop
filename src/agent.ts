@@ -22,6 +22,7 @@ export type LLMCallFn = (
   messages: ChatMessage[],
   tools: { type: "function"; function: { name: string; description: string; parameters: Record<string, unknown> } }[],
   timeoutMs: number,
+  knownToolNames?: Set<string>,
 ) => Promise<LLMResponse>;
 
 const SYSTEM_PROMPT = `You are a helpful research assistant with access to web tools. Use the tools provided to search the web and read pages to answer the user's question.
@@ -52,6 +53,7 @@ export class Agent {
     ];
 
     const tools = this.mcp.getToolsForLLM();
+    const knownToolNames = new Set(tools.map((t) => t.function.name));
 
     for (let iteration = 0; iteration < this.config.maxIterations; iteration++) {
       const response = await this.callLLMFn(
@@ -60,6 +62,7 @@ export class Agent {
         messages,
         tools,
         this.config.llmTimeoutMs,
+        knownToolNames,
       );
 
       // No tool calls — model has produced a final answer

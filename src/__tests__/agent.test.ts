@@ -1,12 +1,12 @@
 import { describe, it, afterEach } from "node:test";
 import assert from "node:assert/strict";
 import { unlinkSync } from "node:fs";
-import { Agent, type LLMCallFn } from "./agent.js";
-import { RateLimiter } from "./rate-limiter.js";
-import { AuditLogger } from "./audit.js";
-import { MCPClientManager } from "./mcp-client.js";
-import type { AgentConfig } from "./config.js";
-import type { LLMResponse } from "./llm-client.js";
+import { Agent, type LLMCallFn } from "../agent.js";
+import { RateLimiter } from "../rate-limiter.js";
+import { AuditLogger } from "../audit.js";
+import { MCPClientManager } from "../mcp-client.js";
+import type { AgentConfig } from "../config.js";
+import type { LLMResponse } from "../llm-client.js";
 
 const TEST_AUDIT_PATH = "test-agent-audit.jsonl";
 
