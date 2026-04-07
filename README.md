@@ -1,10 +1,10 @@
 # minimal-mcp-agent-loop
 
-A secure agent loop in TypeScript that bridges local LLMs to [MCP (Model Context Protocol)](https://modelcontextprotocol.io) servers, with [OWASP security for LLM applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) as a first priority. Built for [LM Studio](https://lmstudio.ai), works with any OpenAI-compatible LLM server.
+A secure MCP client and agent loop in TypeScript that bridges [LM Studio](https://lmstudio.ai) to [MCP (Model Context Protocol)](https://modelcontextprotocol.io) tool servers, with [OWASP security for LLM applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) as a first priority. Works with any OpenAI-compatible LLM server.
 
 ## The problem
 
-Some local models (like llama-3.3-instruct) output tool calls as raw JSON text instead of structured `tool_calls` that LM Studio can execute. The model knows the right tool to call, but nothing actually makes the call. This agent loop closes that gap.
+Some local models (like llama-3.3-instruct) output tool calls as raw JSON text instead of structured `tool_calls` that LM Studio can execute. The model knows the right tool to call, but nothing actually makes the call. This MCP client handles the execution loop that LM Studio can't.
 
 ## What it does
 
